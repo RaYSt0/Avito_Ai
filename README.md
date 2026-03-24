@@ -19,7 +19,7 @@
 ollama pull llama3
 ```
 
-Убедитесь, что демон запущен (часто достаточно держать открытым терминал с `ollama serve`, либо Ollama уже в фоне на macOS).
+Убедитесь, что демон запущен.
 
 Проверка:
 
@@ -28,6 +28,38 @@ curl -s http://localhost:11434/api/tags
 ```
 
 Первый запрос к модели после простоя может занять **десятки секунд** — это нормально.
+
+## Запуск через Docker
+
+Для удобства запуска всего проекта (backend, frontend и Ollama) используйте Docker Compose.
+
+### Требования
+
+- **Docker** и **Docker Compose** ([docker.com](https://docker.com/)).
+- Модель `llama3` должна быть предварительно загружена локально:
+
+```bash
+ollama pull llama3
+```
+
+### Запуск
+
+```bash
+docker-compose up --build
+```
+
+Это запустит:
+- Backend на http://localhost:8080
+- Frontend на http://localhost:5173
+- Ollama на http://localhost:11434 (с моделью llama3)
+
+Откройте http://localhost:5173 в браузере.
+
+### Остановка
+
+```bash
+docker-compose down
+```
 
 ## Запуск проекта
 
